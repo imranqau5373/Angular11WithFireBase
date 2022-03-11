@@ -1,0 +1,30 @@
+<div class="container py-3">
+    <h1 class="display-6">New Extension Details</h1>
+    <br>
+    <form #extensionForm="ngForm" (ngSubmit)="submit(extensionForm)" class="row g-3">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label for="extensionName" class="form-label">Extension Name</label>
+                <input [(ngModel)]="extensionModel.extensionName" name="extensionName" #extensionName="ngModel" type="text"
+                    class="form-control" id="extensionName" required
+                    [ngClass]="{ 'is-invalid': extensionForm.submitted && extensionName.invalid}">
+                <div class="invalid-feedback" *ngIf="extensionForm.submitted && extensionName.invalid">
+            
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label for="description" class="form-label">Extension Description</label>
+                <input [(ngModel)]="extensionModel.description" name="description" #description="ngModel" type="text"
+                    class="form-control" id="description">
+            </div>
+        </div>
+
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
+
+

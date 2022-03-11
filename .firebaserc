@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "chromeextensionauth-119b4": {
+      "hosting": {
+        "patient-app": [
+          "chromeextensionauth-119b4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "chromeextensionauth-119b4"
+  }
+}

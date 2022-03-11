@@ -7,19 +7,11 @@ import { SignaturePadModule } from 'angular2-signaturepad';
 import { ToastrModule } from 'ngx-toastr';
 import { AdminModule } from './admin/admin.module';
 import { AdminDashboardComponent } from './admin/components/admin-dashboard/admin-dashboard.component';
-import { GetAllExistingpatientsComponent } from './admin/components/get-all-existingpatients/get-all-existingpatients.component';
-import { GetAllNewpatientsComponent } from './admin/components/get-all-newpatients/get-all-newpatients.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddPatientOneComponent } from './core/components/add-patient-one/add-patient-one.component';
-import { AddPatientThreeComponent } from './core/components/add-patient-three/add-patient-three.component';
-import { AddPatientTwoComponent } from './core/components/add-patient-two/add-patient-two.component';
-import { ExistingPatientDataComponent } from './core/components/existing-patient-data/existing-patient-data.component';
-import { ExistingPatientComponent } from './core/components/existing-patient/existing-patient.component';
 import { HomeComponent } from './core/components/home/home.component';
-import { MainPatientComponent } from './core/components/main-patient/main-patient.component';
 import { PageNotFoundComponent } from './core/components/page-not-found/page-not-found.component';
-import { PatientDataComponent } from './core/components/patient-data/patient-data.component';
+
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -36,6 +28,14 @@ import {MatButtonModule} from '@angular/material/button'
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
+import { environment } from 'src/environments/environment';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+
+import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { AddUserComponent } from './admin/components/add-user/add-user.component';
+import { AddExtensionComponent } from './admin/components/add-extension/add-extension.component';
+import { UserListComponent } from './admin/components/user-list/user-list.component';
+import { ExtensionListComponent } from './admin/components/extension-list/extension-list.component';
 @NgModule({
   declarations: [
     AppComponent
@@ -77,35 +77,29 @@ import {MatTabsModule} from '@angular/material/tabs';
         component : AdminDashboardComponent
       },
       {
-        path:'add-patient-one',
-        component : PatientDataComponent
-      },
-      {
-        path:'add-patient-two',
-        component : AddPatientTwoComponent
-      },
-      {
-        path:'add-patient-three',
-        component : AddPatientThreeComponent
-      },
-      {
-        path:'existing-patient',
-        component : ExistingPatientComponent
-      },
-      {
-        path:'main-patient-existing',
-        component : ExistingPatientDataComponent
-      },
-      {
-        path:'admin/all-new-patients',
-        component : GetAllNewpatientsComponent
-      },
-      {
-        path:'admin/all-existing-patients',
-        component : GetAllExistingpatientsComponent
+        path:'admin/ext-list',
+        component : ExtensionListComponent
       },
 
-    ])
+      {
+        path:'admin/user-list',
+        component : UserListComponent
+      },
+
+      {
+        path:'admin/add-ext',
+        component : AddExtensionComponent
+      },
+
+      {
+        path:'admin/add-user',
+        component : AddUserComponent
+      },
+
+
+    ]),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirestore(() => getFirestore())
   ],
   providers: [],
   bootstrap: [AppComponent]

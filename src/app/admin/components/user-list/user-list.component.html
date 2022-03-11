@@ -1,0 +1,48 @@
+<div class="container py-3">
+    <h2>List of All Users Records</h2>
+    <br>
+    <mat-form-field>
+      <mat-label>Search Users</mat-label>
+      <input matInput  #input (keyup)="searchUsers(input.value)">
+    </mat-form-field>
+    <mat-table class="mat-elevation-z8" [dataSource]="dataSource">
+      <ng-container matColumnDef="firstName">
+        <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{user.firstName}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="lastName">
+        <mat-header-cell *matHeaderCellDef>Last Name</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{user.lastName}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{user.email}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="clientName">
+        <mat-header-cell *matHeaderCellDef>Client Name</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{user.clientName}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-cell *matCellDef="let user">
+          <a href="javascript:void(0)"  (click)="viewUser()"  class="link-primary">View</a> |
+            <a href="javascript:void(0)" (click)="viewUser()" class="link-success">Edit</a> |
+            <a href="javascript:void(0)" (click)="viewUser()" class="link-danger">Delete</a> 
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="columndefs">
+  
+      </mat-header-row>
+      <mat-row *matRowDef="let row; columns:columndefs">  
+      </mat-row>
+    </mat-table>
+    <mat-paginator [length]="usersList?.length"
+                [pageSize]="10"
+                [pageSizeOptions]="[1,5, 10, 25, 100]"
+                showFirstLastButtons>
+  </mat-paginator>
+  </div>
+  
+  
+    
+    

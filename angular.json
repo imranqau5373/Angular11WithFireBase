@@ -32,7 +32,7 @@
               "node_modules/datatables.net-dt/css/jquery.dataTables.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [            
+            "scripts": [
               "node_modules/jquery/dist/jquery.js",
               "node_modules/datatables.net/js/jquery.dataTables.js",
               "node_modules/bootstrap/dist/js/bootstrap.js"
@@ -105,6 +105,16 @@
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "patient-app:build:production",
+            "firebaseProject": "chromeextensionauth-119b4",
+            "firebaseHostingSite": "chromeextensionauth-119b4"
           }
         }
       }

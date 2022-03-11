@@ -1,0 +1,40 @@
+<div class="container py-3">
+    <h2>List of All Extension Records</h2>
+    <br>
+    <mat-form-field>
+      <mat-label>Search Extension</mat-label>
+      <input matInput  #input (keyup)="searchExtension(input.value)">
+    </mat-form-field>
+    <mat-table class="mat-elevation-z8" [dataSource]="dataSource">
+      <ng-container matColumnDef="extName">
+        <mat-header-cell *matHeaderCellDef>Extension Name</mat-header-cell>
+        <mat-cell *matCellDef="let ext">{{ext.extensionName}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="description">
+        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-cell *matCellDef="let ext">{{ext.description}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
+        <mat-cell *matCellDef="let ext">
+          <a href="javascript:void(0)"  (click)="viewExtension()"  class="link-primary">View</a> |
+            <a href="javascript:void(0)" (click)="viewExtension()" class="link-success">Edit</a> |
+            <a href="javascript:void(0)" (click)="viewExtension()" class="link-danger">Delete</a> 
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="columndefs">
+  
+      </mat-header-row>
+      <mat-row *matRowDef="let row; columns:columndefs">  
+      </mat-row>
+    </mat-table>
+    <mat-paginator [length]="usersList?.length"
+                [pageSize]="10"
+                [pageSizeOptions]="[1,5, 10, 25, 100]"
+                showFirstLastButtons>
+  </mat-paginator>
+  </div>
+  
+  
+    
+    
