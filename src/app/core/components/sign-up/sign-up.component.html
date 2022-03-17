@@ -1,0 +1,46 @@
+<div class="container py-3">
+    <h1 class="display-6">User Login</h1>
+    <br>
+    <form #signupForm="ngForm" (ngSubmit)="signupForm.form.valid && submit(signupForm)" class="row g-3">
+        <!-- <div class="col-md-12">
+            <div class="col-md-4">
+                <label for="email" class="form-label">Email</label>
+                <input [(ngModel)]="signupModel.email" name="email" #email="ngModel" type="email"
+                    class="form-control" id="email" required
+                    [ngClass]="{ 'is-invalid': signupForm.submitted && email.invalid}">
+                <div class="invalid-feedback" *ngIf="signupForm.submitted && email.invalid">
+                    email is Required
+                </div>
+            </div>
+        </div> -->
+        <div class="formGroup">
+            <input
+              type="email"
+              class="formControl"
+              placeholder="Email Address"
+              #userEmail
+              required
+            />
+          </div>
+          <div class="formGroup">
+            <input
+              type="password"
+              class="formControl"
+              placeholder="Password"
+              #userPwd
+              required
+            />
+          </div>
+          <div class="formGroup">
+            <input
+              type="button"
+              class="btn btn-primary"
+              value="Sign Up"
+              (click)="authService.SignUp(userEmail.value, userPwd.value)"
+            />
+          </div>
+        <!-- <div class="col-12">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div> -->
+    </form>
+</div>

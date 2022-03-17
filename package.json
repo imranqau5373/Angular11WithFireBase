@@ -31,14 +31,13 @@
     "datatables.net": "^1.11.3",
     "datatables.net-dt": "^1.11.3",
     "docx": "^7.3.0",
+    "firebase": "^9.6.8",
     "fs-web": "^1.0.1",
     "jquery": "^3.6.0",
     "ngx-toastr": "^14.2.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
-    "zone.js": "~0.11.4",
-    "firebase": "^9.4.0",
-    "rxfire": "^6.0.0"
+    "zone.js": "~0.11.4"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~12.2.9",

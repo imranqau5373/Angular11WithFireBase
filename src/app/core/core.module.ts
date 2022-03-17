@@ -23,6 +23,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatDialogModule } from "@angular/material/dialog";
+import { SignUpComponent } from './components/sign-up/sign-up.component';
+import { LoginComponent } from './components/login/login.component';
 @NgModule({
     imports: [
       FormsModule,
@@ -48,7 +50,7 @@ import { MatDialogModule } from "@angular/material/dialog";
     ],
     declarations: [  
     SwNavbarComponent,
-    HomeComponent, PageNotFoundComponent
+    HomeComponent, PageNotFoundComponent, SignUpComponent, LoginComponent
 
   ],
     exports: [
