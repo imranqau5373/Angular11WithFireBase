@@ -1,10 +1,18 @@
 <div class="container py-3">
     <h2>List of All Users Records</h2>
     <br>
-    <mat-form-field>
-      <mat-label>Search Users</mat-label>
-      <input matInput  #input (keyup)="searchUsers(input.value)">
-    </mat-form-field>
+
+    <div class="row">
+      <div class="col-12">
+        <div class="example-button-row">
+          <mat-form-field>
+            <mat-label>Search Users</mat-label>
+            <input matInput  #input (keyup)="searchUsers(input.value)">
+          </mat-form-field>
+          <button mat-button color="primary" class="btn btn-primary" style="float: right;" (click)="addUser()">Add User</button>
+        </div>
+      </div>
+    </div>
     <mat-table class="mat-elevation-z8" [dataSource]="dataSource">
       <ng-container matColumnDef="firstName">
         <mat-header-cell *matHeaderCellDef>First Name</mat-header-cell>
@@ -15,8 +23,8 @@
         <mat-cell *matCellDef="let user">{{user.lastName}}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
-        <mat-cell *matCellDef="let user">{{user.email}}</mat-cell>
+        <mat-header-cell *matHeaderCellDef>User Name</mat-header-cell>
+        <mat-cell *matCellDef="let user">{{user.userName}}</mat-cell>
       </ng-container>
       <ng-container matColumnDef="clientName">
         <mat-header-cell *matHeaderCellDef>Client Name</mat-header-cell>
@@ -25,9 +33,9 @@
       <ng-container matColumnDef="action">
         <mat-header-cell *matHeaderCellDef>Action</mat-header-cell>
         <mat-cell *matCellDef="let user">
-          <a href="javascript:void(0)"  (click)="viewUser()"  class="link-primary">View</a> |
-            <a href="javascript:void(0)" (click)="viewUser()" class="link-success">Edit</a> |
-            <a href="javascript:void(0)" (click)="viewUser()" class="link-danger">Delete</a> 
+          
+            <a href="javascript:void(0)" (click)="editUser(user.$key)" class="link-success" style="margin: 5px;">Edit</a> |
+            <a href="javascript:void(0)" (click)="deleteUser()" class="link-danger" style="margin: 5px;">Delete</a> 
         </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="columndefs">

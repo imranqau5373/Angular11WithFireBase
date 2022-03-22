@@ -29,10 +29,10 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import { environment } from 'src/environments/environment';
-import { AddUserComponent } from './admin/components/add-user/add-user.component';
-import { AddExtensionComponent } from './admin/components/add-extension/add-extension.component';
-import { UserListComponent } from './admin/components/user-list/user-list.component';
-import { ExtensionListComponent } from './admin/components/extension-list/extension-list.component';
+import { AddUserComponent } from './admin/components/users/add-user/add-user.component';
+import { AddExtensionComponent } from './admin/components/extension/add-extension/add-extension.component';
+import { UserListComponent } from './admin/components/users/user-list/user-list.component';
+import { ExtensionListComponent } from './admin/components/extension/extension-list/extension-list.component';
 import { LoginComponent } from './core/components/login/login.component';
 import { SignUpComponent } from './core/components/sign-up/sign-up.component';
 import { AngularFireModule } from '@angular/fire/compat';
@@ -42,6 +42,8 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AuthService } from './shared/service/auth.service';
 import { AuthGuard } from '../app/shared/guard/auth.guard';
+import { EditExtensionComponent } from './admin/components/extension/edit-extension/edit-extension.component';
+import { EditUserComponent } from './admin/components/users/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -113,10 +115,19 @@ import { AuthGuard } from '../app/shared/guard/auth.guard';
         path:'admin/add-ext',
         component : AddExtensionComponent
       },
+      {
+        path:'admin/edit-ext/:id',
+        component : EditExtensionComponent
+      },
+
 
       {
-        path:'admin/add-user',
+        path:'admin/user-add',
         component : AddUserComponent
+      },
+      {
+        path:'admin/user-edit/:id',
+        component : EditUserComponent
       },
 
 

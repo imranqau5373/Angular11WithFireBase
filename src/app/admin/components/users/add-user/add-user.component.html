@@ -1,0 +1,86 @@
+<div class="container py-3">
+    <h1 class="display-6">New User/Client Details</h1>
+    <br>
+    <form #userForm="ngForm" (ngSubmit)="userForm.form.valid && submit()" class="row g-3">
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label for="firstName" class="form-label">First Name</label>
+                <input [(ngModel)]="userModel.firstName" name="firstName" #firstName="ngModel" type="text"
+                    class="form-control" id="firstName" required
+                    [ngClass]="{ 'is-invalid': userForm.submitted && firstName.invalid}">
+                <div class="invalid-feedback" *ngIf="userForm.submitted && firstName.invalid">
+                    First Name is Required
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input [(ngModel)]="userModel.lastName" name="lastName" #lastName="ngModel" type="text"
+                    class="form-control" id="lastName" required
+                    [ngClass]="{ 'is-invalid': userForm.submitted && lastName.invalid}">
+                <div class="invalid-feedback" *ngIf="userForm.submitted && lastName.invalid">
+                    Last Name is Required
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label for="clientName" class="form-label">Client Name</label>
+                <input [(ngModel)]="userModel.clientName" name="clientName" #clientName="ngModel" type="text"
+                    class="form-control" id="clientName">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label for="userName" class="form-label">User Name</label>
+                <input [(ngModel)]="userModel.userName" name="userName" #userName="ngModel" type="text"
+                    class="form-control" id="userName" required
+                    [ngClass]="{ 'is-invalid': userForm.submitted && userName.invalid}">
+                <div class="invalid-feedback" *ngIf="userForm.submitted && userName.invalid">
+                    User Name is Required
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label for="password" class="form-label">Password</label>
+                <input [(ngModel)]="userModel.password" name="password" #password="ngModel" type="password"
+                    class="form-control" id="password" required
+                    [ngClass]="{ 'is-invalid': userForm.submitted && password.invalid}">
+                <div class="invalid-feedback" *ngIf="userForm.submitted && password.invalid">
+                    Password is Required
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label for="description" class="form-label">Description</label>
+                <input [(ngModel)]="userModel.description" name="description" #description="ngModel" type="text"
+                    class="form-control" id="description">
+
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <label for="selectExtension" class="form-label">Select Extension</label>
+                <mat-form-field appearance="fill" style="width: 100%;">
+
+                    <mat-select  multiple  [(ngModel)]="userModel.selectExtension" name="selectExtension" #selectExtension="ngModel">
+                        <mat-option *ngFor="let extension of extensionList" [value]="extension.$key">
+                          {{extension.extensionName}}</mat-option>
+                      </mat-select>
+                    <div class="invalid-feedback" *ngIf="userForm.submitted && selectExtension.invalid">
+                      Extension is Required
+                    </div>
+                </mat-form-field>
+ 
+            </div>
+
+          </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="button" class="btn btn-secondary" (click)="usersList()" style="margin-left:10px;">cancel</button>
+        </div>
+    </form>
+</div>

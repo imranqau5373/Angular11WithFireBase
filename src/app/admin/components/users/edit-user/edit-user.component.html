@@ -1,7 +1,7 @@
 <div class="container py-3">
     <h1 class="display-6">New User/Client Details</h1>
     <br>
-    <form #userForm="ngForm" (ngSubmit)="userForm.form.valid && submit(userForm)" class="row g-3">
+    <form #userForm="ngForm" (ngSubmit)="userForm.form.valid && submit()" class="row g-3">
         <div class="col-md-12">
             <div class="col-md-4">
                 <label for="firstName" class="form-label">First Name</label>
@@ -35,7 +35,7 @@
             <div class="col-md-4">
                 <label for="userName" class="form-label">User Name</label>
                 <input [(ngModel)]="userModel.userName" name="userName" #userName="ngModel" type="text"
-                    class="form-control" id="userName" required
+                    class="form-control" id="userName" disabled required
                     [ngClass]="{ 'is-invalid': userForm.submitted && userName.invalid}">
                 <div class="invalid-feedback" *ngIf="userForm.submitted && userName.invalid">
                     User Name is Required
@@ -46,7 +46,7 @@
             <div class="col-md-4">
                 <label for="password" class="form-label">Password</label>
                 <input [(ngModel)]="userModel.password" name="password" #password="ngModel" type="password"
-                    class="form-control" id="password" required
+                    class="form-control" id="password" disabled required
                     [ngClass]="{ 'is-invalid': userForm.submitted && password.invalid}">
                 <div class="invalid-feedback" *ngIf="userForm.submitted && password.invalid">
                     Password is Required
@@ -64,23 +64,23 @@
         <div class="col-md-12">
             <div class="col-md-4">
                 <label for="selectExtension" class="form-label">Select Extension</label>
-                <select class="form-select" [(ngModel)]="userModel.selectExtension" name="selectExtension" required
-                 #selectExtension="ngModel" aria-label="Default select example"
-                [ngClass]="{ 'is-invalid': userForm.submitted && selectExtension.invalid}">
-    
-                  <option selected>Select</option>
-                  <option value="Covid">Ticket Extension</option>
-                  <option value="CovidConsultation">Sales extension</option>
-                  <option value="Consultation / Medicine Refill">Medicial Extension</option>
-                </select>
-                <div class="invalid-feedback" *ngIf="userForm.submitted && selectExtension.invalid">
-                  Reason for Visit is Required
-                </div>
+                <mat-form-field appearance="fill" style="width: 100%;">
+
+                    <mat-select  multiple  [(ngModel)]="userModel.selectExtension" name="selectExtension" #selectExtension="ngModel">
+                        <mat-option *ngFor="let extension of extensionList" [value]="extension.$key">
+                          {{extension.extensionName}}</mat-option>
+                      </mat-select>
+                    <div class="invalid-feedback" *ngIf="userForm.submitted && selectExtension.invalid">
+                      Extension is Required
+                    </div>
+                </mat-form-field>
+ 
             </div>
 
           </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+            <button type="button" class="btn btn-secondary" (click)="usersList()" style="margin-left:10px;">cancel</button>
         </div>
     </form>
 </div>
